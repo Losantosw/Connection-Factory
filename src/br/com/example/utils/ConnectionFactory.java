@@ -29,15 +29,15 @@ public class ConnectionFactory {
 	}
 	
 	public static void closeConnection(Connection conn) {
-			try {
-				if(conn != null) {
-					conn.close();
-				}
-			}catch (SQLException ex) {
-				
-				Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+		try {
+			if(conn != null) {
+				conn.close();
 			}
 		}
+		} catch (SQLException ex) {		
+			Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 	
 
 	public static void closeConnection(Connection conn, PreparedStatement pstm) {
@@ -48,7 +48,7 @@ public class ConnectionFactory {
 			if(pstm != null) {
 				pstm.close();
 			}
-		}catch (SQLException ex) {
+		} catch (SQLException ex) {
 			Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
@@ -56,16 +56,15 @@ public class ConnectionFactory {
 	
 	public static void closeConnection(Connection conn, PreparedStatement pstm, ResultSet rs) {
 			
-			closeConnection(conn, pstm);
+		closeConnection(conn, pstm);
 			
-			try {
-				if(rs != null) {
-					rs.close();
-				}
-			}catch (SQLException ex) {
-				Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+		try {
+			if(rs != null) {
+				rs.close();
 			}
+		} catch (SQLException ex) {
+			Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+		}
 	}
-	
-	
+
 }
